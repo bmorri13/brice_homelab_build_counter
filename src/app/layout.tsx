@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Printer Build Tracker",
-  description: "Tracker for Alex's 3D printer build",
+  title: "Brice Homelab Build Tracker",
+  description: "Tracker for Brice's Homelab build",
 };
 
 export default function RootLayout({
