@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link" // Added Link import
 import { formatTimeDifference } from "@/app/utils/formatTime"; // Adjusted import path
 
 export default function UbiquityTrackerPage() {
@@ -38,6 +39,12 @@ export default function UbiquityTrackerPage() {
               className="rounded-lg object-cover"
             />
           </div>
+        </div>
+        {/* Link back to main page */}
+        <div className="mt-8">
+          <Link href="/" className="text-lg text-purple-400 hover:text-purple-300 underline transition duration-150 ease-in-out">
+            Back to Home page
+          </Link>
         </div>
       </div>
     </div>
