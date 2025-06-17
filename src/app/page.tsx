@@ -5,6 +5,7 @@ import { formatTimeDifference } from "./utils/formatTime"
 import { useState, useEffect } from "react"
 import Confetti from "react-confetti"
 import { factsForDuration } from "./components/Facts"
+import Link from "next/link"
 
 export default function CountUpTimer() {
   const startDate = new Date("2025-05-26T00:00:00")
@@ -92,6 +93,12 @@ export default function CountUpTimer() {
             {randomFact}
           </div>
         )}
+
+        <div className="mt-8">
+          <Link href="/tracker/ubiquity-network-gear" className="text-lg text-sky-400 hover:text-sky-300 underline transition duration-150 ease-in-out">
+            Track Ubiquity Network Gear Setup
+          </Link>
+        </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mt-8">
           <div className="relative w-64 h-64">
