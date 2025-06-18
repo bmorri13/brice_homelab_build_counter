@@ -17,22 +17,20 @@ export default function UbiquityNetworkTracker() {
   const timeToComplete = successfullyBuiltDate.getTime() - startDate.getTime()
 
   useEffect(() => {
-    // Set initial dimensions and trigger confetti on load
     setDimensions({ width: window.innerWidth, height: window.innerHeight })
-    triggerConfetti()
-  }, [])
-
-  const triggerConfetti = () => {
     setShowConfetti(true)
-    // Ensure dimensions are set before showing confetti if triggered by button
-    if (dimensions.width === 0 || dimensions.height === 0) {
-      setDimensions({ width: window.innerWidth, height: window.innerHeight })
-    }
     const timer = setTimeout(() => {
       setShowConfetti(false)
     }, 10000) // Confetti will show for 10 seconds
-    // It's good practice to clear the timeout if the component unmounts or if confetti is re-triggered
     return () => clearTimeout(timer)
+  }, [])
+
+  const triggerConfetti = () => {
+    setDimensions({ width: window.innerWidth, height: window.innerHeight })
+    setShowConfetti(true)
+    setTimeout(() => {
+      setShowConfetti(false)
+    }, 10000)
   }
 
   const getRandomFact = () => {
