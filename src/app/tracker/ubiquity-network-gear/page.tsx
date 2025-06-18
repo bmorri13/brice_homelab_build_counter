@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { formatTimeDifference } from "../../utils/formatTime"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Confetti from "react-confetti"
 import { ubiquityFacts } from "../../components/UbiquityFacts"
 import Link from "next/link"
@@ -16,7 +16,7 @@ export default function UbiquityNetworkTracker() {
 
   const timeToComplete = successfullyBuiltDate.getTime() - startDate.getTime()
 
-  useEffect(() => {
+  const triggerConfetti = useCallback(() => {
     setDimensions({ width: window.innerWidth, height: window.innerHeight })
     setShowConfetti(true)
     const timer = setTimeout(() => {
@@ -25,13 +25,9 @@ export default function UbiquityNetworkTracker() {
     return () => clearTimeout(timer)
   }, [])
 
-  const triggerConfetti = () => {
-    setDimensions({ width: window.innerWidth, height: window.innerHeight })
-    setShowConfetti(true)
-    setTimeout(() => {
-      setShowConfetti(false)
-    }, 10000)
-  }
+  useEffect(() => {
+    triggerConfetti()
+  }, [triggerConfetti])
 
   const getRandomFact = () => {
     const randomIndex = Math.floor(Math.random() * ubiquityFacts.length)
@@ -43,7 +39,7 @@ export default function UbiquityNetworkTracker() {
       {showConfetti && <Confetti width={dimensions.width} height={dimensions.height} />}
       <div className="text-center max-w-2xl w-full">
         <h1 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-          Brice's Ubiquity Network Gear Setup
+          Brice Ubiquity Network Gear Setup
         </h1>
 
         {/* Card for Start Date */}
