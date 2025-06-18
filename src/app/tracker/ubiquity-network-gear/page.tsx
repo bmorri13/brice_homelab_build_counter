@@ -103,11 +103,20 @@ export default function UbiquityNetworkTracker() {
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mt-8">
           <div className="relative w-64 h-64">
             <Image
-              src="/images/brice_unifi_gear_01.jpeg"
+              src="/images/brice_unifi_gear_complete_01.jpeg"
               alt="Ubiquity Network Gear"
               fill
               sizes="(max-width: 768px) 100vw, 256px"
               className="rounded-lg object-cover"
+            />
+          </div>
+          <div className="relative w-64 h-64">
+            <Image
+              src="/images/brice_unifi_gear_complete_02.png"
+              alt="Ubiquity Network Gear 2"
+              fill
+              sizes="(max-width: 768px) 100vw, 256px"
+              className="rounded-lg object-contain"
             />
           </div>
         </div>
