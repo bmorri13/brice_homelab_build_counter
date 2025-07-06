@@ -33,4 +33,19 @@ jobs:
         file: Dockerfile
         push: true
         tags: ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_REPO_NAME }}:latest
-        
+
+
+    - name: Connect Tailscale
+      uses: tailscale/github-action@v2
+      with:
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:git-ci
+
+    - name: Do the deploy thing
+      run: |
+        ssh -o "StrictHostKeyChecking no" ${{ secrets.SSH_USER }}@docker-compose-01 "
+          whoami
+          hostname
+        "
+           
