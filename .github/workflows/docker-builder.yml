@@ -50,7 +50,9 @@ jobs:
           cd /opt/docker/
           git clone https://github.com/${{ github.repository }}.git
           echo 'CF_TOKEN=$CF_TOKEN ' > /opt/docker/${REPO_NAME}/.env
+          pwd
           cd /opt/docker/${REPO_NAME}
+          pwd
           docker compose pull
           docker compose up -d
           hostname
