@@ -42,14 +42,14 @@ jobs:
         oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
         tags: tag:git-ci
 
-    - name: Do the deploy thing
+    - name: SSH and deploy docker compose
       env:
         CF_TOKEN: ${{ secrets.CF_TOKEN }}
       run: |
         ssh -o "StrictHostKeyChecking no" ${{ secrets.SSH_USER }}@docker-compose-01 "
           echo 'CF_TOKEN=$CF_TOKEN ' > /opt/docker/brice_homelab_counter/.env
           cd /opt/docker/brice_homelab_counter
-          git clone https://github.com/${{ github.repository }}.git
+          git clone https://github.com/${{ github.repository }}.git .
           docker compose pull
           docker compose up -d
           hostname
