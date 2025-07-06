@@ -49,8 +49,8 @@ jobs:
         ssh -o "StrictHostKeyChecking no" ${{ secrets.SSH_USER }}@docker-compose-01 "
           cd /opt/docker/
           git clone https://github.com/${{ github.repository }}.git
-          echo 'CF_TOKEN=$CF_TOKEN ' > /opt/docker/brice_homelab_counter/.env
-          cd /opt/docker/brice_homelab_counter
+          echo 'CF_TOKEN=$CF_TOKEN ' > /opt/docker/${REPO_NAME}/.env
+          cd /opt/docker/${REPO_NAME}
           docker compose pull
           docker compose up -d
           hostname
