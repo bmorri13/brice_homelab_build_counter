@@ -43,9 +43,11 @@ jobs:
         tags: tag:git-ci
 
     - name: Do the deploy thing
+      env:
+        CF_TOKEN: ${{ secrets.CF_TOKEN }}
       run: |
         ssh -o "StrictHostKeyChecking no" ${{ secrets.SSH_USER }}@docker-compose-01 "
-          whoami
+          echo ' $CF_TOKEN ' > /tmp/cf_token
           hostname
         "
            
