@@ -47,7 +47,10 @@ jobs:
         CF_TOKEN: ${{ secrets.CF_TOKEN }}
       run: |
         ssh -o "StrictHostKeyChecking no" ${{ secrets.SSH_USER }}@docker-compose-01 "
-          echo ' CF_TOKEN=$CF_TOKEN ' > /tmp/cf_token
+          echo 'CF_TOKEN=$CF_TOKEN ' > /opt/docker/brice_homelab_counter/.env
+          cd /opt/docker/brice_homelab_counter
+          docker compose pull
+          docker compose up -d
           hostname
         "
            
