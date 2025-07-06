@@ -47,7 +47,7 @@ jobs:
         CF_TOKEN: ${{ secrets.CF_TOKEN }}
       run: |
         ssh -o "StrictHostKeyChecking no" ${{ secrets.SSH_USER }}@docker-compose-01 "
-          echo ' $CF_TOKEN ' > /tmp/cf_token
+          echo ' CF_TOKEN=$CF_TOKEN ' > /tmp/cf_token
           hostname
         "
            
