@@ -49,9 +49,9 @@ jobs:
         ssh -o "StrictHostKeyChecking no" ${{ secrets.SSH_USER }}@docker-compose-01 "
           cd /opt/docker/
           git clone https://github.com/${{ github.repository }}.git
-          echo 'CF_TOKEN=$CF_TOKEN ' > /opt/docker/${REPO_NAME}/.env
+          echo 'CF_TOKEN=$CF_TOKEN ' > /opt/docker/${{ github.event.repository.name }}/.env
           pwd
-          cd /opt/docker/${REPO_NAME}
+          cd /opt/docker/${{ github.event.repository.name }}
           pwd
           docker compose pull
           docker compose up -d
